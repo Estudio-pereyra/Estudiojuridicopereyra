@@ -317,13 +317,19 @@
       cursor: default;
     }
 
-    .area-card:hover {
+    .area-card:hover,
+    .area-card.open {
       background: var(--navy);
     }
 
-    .area-card:hover .area-icon { color: var(--gold); }
-    .area-card:hover .area-title { color: var(--white); }
-    .area-card:hover .area-text { color: rgba(255,255,255,0.7); }
+    .area-card:hover .area-icon,
+    .area-card.open .area-icon { color: var(--gold); }
+
+    .area-card:hover .area-title,
+    .area-card.open .area-title { color: var(--white); }
+
+    .area-card:hover .area-text,
+    .area-card.open .area-text { color: rgba(255,255,255,0.7); }
 
     .area-icon {
       font-size: 1.8rem;
@@ -950,7 +956,7 @@
     <div class="team-grid" style="max-width: 380px;">
       <div class="team-card">
         <div class="team-avatar">P</div>
-        <div class="team-name">Dra. Pereyra</div>
+        <div class="team-name">Abg. Sandra Pereyra</div>
         <div class="team-role">Abogada Titular</div>
         <p class="team-bio">Titular del estudio, con amplia trayectoria en derecho previsional, sucesiones, auditorías y procuración. Atención personalizada y compromiso con cada caso.</p>
       </div>
@@ -1027,7 +1033,7 @@
             <option value="">— Seleccione una opción —</option>
             <option>Derecho Previsional</option>
             <option>Sucesiones</option>
-            <option>Auditorías</option>
+            <option>Auditorías Previsionales</option>
             <option>Procuración</option>
             <option>Gestoría</option>
             <option>Cálculos Previsionales</option>
