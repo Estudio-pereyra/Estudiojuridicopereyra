@@ -618,6 +618,70 @@
       align-self: flex-start;
     }
 
+    /* ÁREAS EXPANDIBLES */
+    .area-card.expandable { cursor: pointer; }
+
+    .area-card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .area-card-header .area-icon { margin-bottom: 0; }
+    .area-card-header .area-title { margin-bottom: 0; flex: 1; }
+
+    .area-arrow {
+      font-size: 1.4rem;
+      color: var(--navy);
+      line-height: 1;
+      transition: transform 0.3s, color 0.25s;
+      font-weight: 300;
+      margin-left: auto;
+    }
+
+    .area-card:hover .area-arrow { color: var(--gold); }
+    .area-card.open .area-arrow { transform: rotate(45deg); color: var(--gold); }
+
+    .area-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s;
+    }
+
+    .area-card.open .area-body {
+      max-height: 400px;
+      padding-top: 1.2rem;
+    }
+
+    .area-list {
+      list-style: none;
+      margin-top: 0.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .area-list li {
+      font-size: 0.87rem;
+      color: var(--text-muted);
+      padding-left: 1rem;
+      position: relative;
+      line-height: 1.5;
+      transition: color 0.25s;
+    }
+
+    .area-list li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-size: 0.7rem;
+      top: 2px;
+    }
+
+    .area-card.open .area-list li,
+    .area-card:hover .area-list li { color: rgba(255,255,255,0.7); }
+
     /* MAPA PLACEHOLDER */
     .map-placeholder {
       background: #dde3ec;
@@ -747,11 +811,11 @@
   <div class="hero-content">
     <div class="hero-eyebrow">Estudio Jurídico · Desde 2004</div>
     <h1 class="hero-title">
-      Defensa legal<br><em>con criterio y experiencia</em>
+      Asesoramiento legal<br><em>previsional</em>
     </h1>
     <div class="hero-line"></div>
     <p class="hero-sub">
-      Asesoramiento jurídico integral para personas y empresas. Comprometidos con la gestión, guiados por principios de justicia, integridad y humanidad.
+      Consultoría jurídica previsional para personas y empresas. Comprometidos con la gestión, guiados por principios de justicia, integridad y humanidad.
     </p>
     <div class="hero-actions">
       <a href="#areas" class="btn-outline">Ver áreas de práctica</a>
@@ -765,31 +829,113 @@
     <div class="section-label">Especialidades</div>
     <h2 class="section-title">Áreas de práctica jurídica</h2>
     <div class="areas-grid">
-      <div class="area-card">
-        <div class="area-icon">🧾</div>
-        <div class="area-title">Derecho Previsional</div>
-        <p class="area-text">Jubilaciones, pensiones, reajustes de haberes y reclamos ante ANSES. Asesoramiento y representación en todas las instancias previsionales.</p>
+
+      <div class="area-card expandable" onclick="toggleArea(this)">
+        <div class="area-card-header">
+          <div class="area-icon">🧾</div>
+          <div class="area-title">Derecho Previsional</div>
+          <div class="area-arrow">﹢</div>
+        </div>
+        <div class="area-body">
+          <p class="area-text">Jubilaciones, pensiones, reajustes de haberes y reclamos ante ANSES. Asesoramiento y representación en todas las instancias previsionales.</p>
+          <ul class="area-list">
+            <li>Jubilación ordinaria y anticipada</li>
+            <li>Pensiones por fallecimiento e invalidez</li>
+            <li>Reajuste de haberes jubilatorios</li>
+            <li>Reclamos ante ANSES y organismos previsionales</li>
+            <li>Convenios internacionales de seguridad social</li>
+            <li>Cajas profesionales (abogados, médicos, contadores, etc.)</li>
+          </ul>
+        </div>
       </div>
-      <div class="area-card">
-        <div class="area-icon">🏠</div>
-        <div class="area-title">Derechos Reales</div>
-        <p class="area-text">Compraventas, hipotecas, usufructo, servidumbres, propiedad horizontal y consorcios. Estudio de títulos y escrituraciones.</p>
+
+      <div class="area-card expandable" onclick="toggleArea(this)">
+        <div class="area-card-header">
+          <div class="area-icon">📜</div>
+          <div class="area-title">Sucesiones</div>
+          <div class="area-arrow">﹢</div>
+        </div>
+        <div class="area-body">
+          <p class="area-text">Tramitación integral de sucesiones, declaratorias de herederos y adjudicación de bienes, con acompañamiento en cada etapa del proceso.</p>
+          <ul class="area-list">
+            <li>Declaratoria de herederos</li>
+            <li>Inventario y avalúo de bienes</li>
+            <li>Partición y adjudicación hereditaria</li>
+            <li>Sucesiones testamentarias e intestadas</li>
+            <li>Sucesiones con bienes en el exterior</li>
+          </ul>
+        </div>
       </div>
-      <div class="area-card">
-        <div class="area-icon">🔍</div>
-        <div class="area-title">Auditorías</div>
-        <p class="area-text">Auditorías jurídicas de contratos, expedientes y documentación. Revisión de antecedentes legales y detección de riesgos para personas y organizaciones.</p>
+
+      <div class="area-card expandable" onclick="toggleArea(this)">
+        <div class="area-card-header">
+          <div class="area-icon">🔍</div>
+          <div class="area-title">Auditorías</div>
+          <div class="area-arrow">﹢</div>
+        </div>
+        <div class="area-body">
+          <p class="area-text">Auditorías jurídicas de expedientes y documentación. Revisión de antecedentes legales y detección de riesgos para personas y organizaciones.</p>
+          <ul class="area-list">
+            <li>Auditoría de expedientes previsionales</li>
+            <li>Revisión de documentación legal</li>
+            <li>Detección de inconsistencias y riesgos jurídicos</li>
+            <li>Informes jurídicos para organismos y particulares</li>
+          </ul>
+        </div>
       </div>
-      <div class="area-card">
-        <div class="area-icon">⚖</div>
-        <div class="area-title">Procuración</div>
-        <p class="area-text">Representación y seguimiento de expedientes judiciales y administrativos. Diligencias procesales ante tribunales y organismos públicos.</p>
+
+      <div class="area-card expandable" onclick="toggleArea(this)">
+        <div class="area-card-header">
+          <div class="area-icon">⚖</div>
+          <div class="area-title">Procuración</div>
+          <div class="area-arrow">﹢</div>
+        </div>
+        <div class="area-body">
+          <p class="area-text">Representación y seguimiento de expedientes judiciales y administrativos. Diligencias procesales ante tribunales y organismos públicos.</p>
+          <ul class="area-list">
+            <li>Seguimiento de expedientes judiciales</li>
+            <li>Diligencias ante tribunales civiles y previsionales</li>
+            <li>Presentaciones ante ANSES y organismos públicos</li>
+            <li>Notificaciones y oficios judiciales</li>
+          </ul>
+        </div>
       </div>
-      <div class="area-card">
-        <div class="area-icon">📋</div>
-        <div class="area-title">Gestoría</div>
-        <p class="area-text">Trámites ante organismos públicos, registros y dependencias. Gestión ágil y seguimiento personalizado de cada expediente.</p>
+
+      <div class="area-card expandable" onclick="toggleArea(this)">
+        <div class="area-card-header">
+          <div class="area-icon">📋</div>
+          <div class="area-title">Gestoría</div>
+          <div class="area-arrow">﹢</div>
+        </div>
+        <div class="area-body">
+          <p class="area-text">Trámites ante organismos públicos, registros y dependencias. Gestión ágil y seguimiento personalizado de cada expediente.</p>
+          <ul class="area-list">
+            <li>Trámites ante ANSES, AFIP y registros civiles</li>
+            <li>Gestión de documentación y certificados</li>
+            <li>Seguimiento y monitoreo de expedientes</li>
+            <li>Habilitaciones y trámites administrativos</li>
+          </ul>
+        </div>
       </div>
+
+      <div class="area-card expandable" onclick="toggleArea(this)">
+        <div class="area-card-header">
+          <div class="area-icon">🧮</div>
+          <div class="area-title">Cálculos Previsionales</div>
+          <div class="area-arrow">﹢</div>
+        </div>
+        <div class="area-body">
+          <p class="area-text">Determinación y proyección de haberes previsionales, liquidaciones de retroactivos y análisis de reajustes según la normativa vigente.</p>
+          <ul class="area-list">
+            <li>Cálculo de haber inicial de jubilación</li>
+            <li>Proyección de haber mínimo y máximo</li>
+            <li>Liquidación de retroactivos previsionales</li>
+            <li>Análisis de reajuste por índices (RIPTE, CPI, Badaro)</li>
+            <li>Simulaciones para planificación jubilatoria</li>
+          </ul>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -800,13 +946,13 @@
 <section class="section team-bg" id="equipo">
   <div class="section-inner">
     <div class="section-label" style="color: var(--gold);">Quién está detrás</div>
-    <h2 class="section-title" style="color: var(--white);">Abogada fundadora</h2>
+    <h2 class="section-title" style="color: var(--white);">Abogada titular</h2>
     <div class="team-grid" style="max-width: 380px;">
       <div class="team-card">
         <div class="team-avatar">P</div>
         <div class="team-name">Dra. Pereyra</div>
-        <div class="team-role">Abogada Fundadora</div>
-        <p class="team-bio">Fundadora del estudio, con amplia trayectoria en derecho previsional, derechos reales, auditorías y procuración. Atención personalizada y compromiso con cada caso.</p>
+        <div class="team-role">Abogada Titular</div>
+        <p class="team-bio">Titular del estudio, con amplia trayectoria en derecho previsional, sucesiones, auditorías y procuración. Atención personalizada y compromiso con cada caso.</p>
       </div>
     </div>
   </div>
@@ -856,7 +1002,7 @@
         </div>
       </div>
 
-      <div class="contact-form">
+      <div class="contact-form" id="form-wrapper">
         <div class="form-row">
           <div class="form-group">
             <label>Nombre</label>
@@ -880,10 +1026,11 @@
           <select id="f-area">
             <option value="">— Seleccione una opción —</option>
             <option>Derecho Previsional</option>
-            <option>Derechos Reales</option>
+            <option>Sucesiones</option>
             <option>Auditorías</option>
             <option>Procuración</option>
             <option>Gestoría</option>
+            <option>Cálculos Previsionales</option>
             <option>Otra consulta</option>
           </select>
         </div>
@@ -891,7 +1038,7 @@
           <label>Descripción breve</label>
           <textarea id="f-msg" placeholder="Describa brevemente su situación para que podamos orientarle mejor..."></textarea>
         </div>
-        <button class="btn-primary form-submit" onclick="enviarFormulario()">Enviar consulta</button>
+        <button class="btn-primary form-submit" id="btn-enviar" onclick="enviarFormulario()">Enviar consulta</button>
       </div>
     </div>
   </div>
@@ -914,6 +1061,12 @@
 <div class="toast" id="toast">✓ Consulta enviada. Le contactaremos a la brevedad.</div>
 
 <script>
+  function toggleArea(card) {
+    const isOpen = card.classList.contains('open');
+    document.querySelectorAll('.area-card.expandable').forEach(c => c.classList.remove('open'));
+    if (!isOpen) card.classList.add('open');
+  }
+
   function toggleMenu(el) {
     const links = document.querySelector('.nav-links');
     links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
@@ -926,18 +1079,65 @@
     links.style.gap = '1.2rem';
   }
 
-  function enviarFormulario() {
-    const nombre = document.getElementById('f-nombre').value.trim();
-    const email  = document.getElementById('f-email').value.trim();
+  async function enviarFormulario() {
+    const nombre  = document.getElementById('f-nombre').value.trim();
+    const apellido= document.getElementById('f-apellido').value.trim();
+    const email   = document.getElementById('f-email').value.trim();
+    const tel     = document.getElementById('f-tel').value.trim();
+    const area    = document.getElementById('f-area').value;
+    const msg     = document.getElementById('f-msg').value.trim();
+
     if (!nombre || !email) {
       alert('Por favor complete al menos su nombre y correo electrónico.');
       return;
     }
-    const toast = document.getElementById('toast');
-    toast.classList.add('show');
-    setTimeout(() => toast.classList.remove('show'), 4000);
-    ['f-nombre','f-apellido','f-email','f-tel','f-msg'].forEach(id => document.getElementById(id).value = '');
-    document.getElementById('f-area').value = '';
+
+    const btn = document.getElementById('btn-enviar');
+    btn.textContent = 'Enviando...';
+    btn.disabled = true;
+    btn.style.opacity = '0.7';
+
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/estudiojuridico_pereyra@outlook.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          nombre:    nombre + ' ' + apellido,
+          email:     email,
+          telefono:  tel || '—',
+          area:      area || '—',
+          consulta:  msg || '—',
+          _subject:  'Nueva consulta desde el sitio web — Estudio Jurídico Pereyra',
+          _template: 'table'
+        })
+      });
+
+      const data = await response.json();
+
+      if (data.success === 'true' || data.success === true) {
+        // Éxito
+        const toast = document.getElementById('toast');
+        toast.textContent = '✓ Consulta enviada. Le contactaremos a la brevedad.';
+        toast.style.borderColor = 'var(--gold)';
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 5000);
+
+        ['f-nombre','f-apellido','f-email','f-tel','f-msg'].forEach(id => document.getElementById(id).value = '');
+        document.getElementById('f-area').value = '';
+      } else {
+        throw new Error('Respuesta inesperada');
+      }
+    } catch (err) {
+      const toast = document.getElementById('toast');
+      toast.textContent = '✗ Hubo un error al enviar. Intente por teléfono o email directamente.';
+      toast.style.borderColor = '#c0392b';
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 6000);
+    } finally {
+      btn.textContent = 'Enviar consulta';
+      btn.disabled = false;
+      btn.style.opacity = '1';
+    }
   }
 
   // Smooth active nav highlight
